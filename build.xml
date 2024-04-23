@@ -1,0 +1,28 @@
+<project name="TestFenetre" default="compile" basedir=".">
+    <description>
+        A simple Ant build file for compiling TestFenetre Java project.
+    </description>
+
+    <!-- Define properties -->
+    <property name="src.dir" value="src" />
+    <property name="build.dir" value="build" />
+    <property name="classes.dir" value="${build.dir}/classes" />
+
+    <!-- Define classpath -->
+    <path id="classpath">
+      <fileset dir="${classes.dir}"/>
+    </path>
+
+    <!-- Clean target -->
+    <target name="clean">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <!-- Compile target -->
+    <target name="compile" depends="clean">
+        <mkdir dir="${classes.dir}" />
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+</project>
